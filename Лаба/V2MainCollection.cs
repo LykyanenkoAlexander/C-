@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Numerics;
+using System.Threading.Tasks;
 
 namespace Лаба
 {
@@ -39,6 +41,12 @@ namespace Лаба
         {
             bool res = false;
 
+            Console.WriteLine('\n' + "Before Removing:" + '\n');
+            foreach (var item in Main_Data.ToArray())
+            {
+                Console.WriteLine(item);
+            }
+
             foreach (var item in Main_Data.ToArray())
             {
                 if ((item.Indef == id) && (item.Freq == w))
@@ -48,13 +56,18 @@ namespace Лаба
                 }
             }
 
+            Console.WriteLine('\n' + "After Removing:" + '\n');
+            foreach (var item in Main_Data.ToArray())
+            {
+                Console.WriteLine(item);
+            }
+
             return res;
         }
 
         public void AddDefaults()
         {
             Random rnd = new Random();
-            //int n_new = rnd.Next(3,Int32.MaxValue);
             int n_new = rnd.Next(3, 5);
 
             for (int i = 0; i < n_new; i++)
@@ -67,7 +80,6 @@ namespace Лаба
                 Main_Data.Add(New_Grid);
                 Main_Data.Add(New_Coll);
             }
-
         }
 
         public override string ToString()

@@ -4,7 +4,6 @@ C:\Users\mrlyk\Desktop\Код С#\Лаба\Лаба\bin\Debug\netcoreapp3.1\Ла
 C:\Users\mrlyk\Desktop\Код С#\Лаба\Лаба\bin\Debug\netcoreapp3.1\Лаба.runtimeconfig.dev.json
 C:\Users\mrlyk\Desktop\Код С#\Лаба\Лаба\bin\Debug\netcoreapp3.1\Лаба.dll
 C:\Users\mrlyk\Desktop\Код С#\Лаба\Лаба\bin\Debug\netcoreapp3.1\Лаба.pdb
-C:\Users\mrlyk\Desktop\Код С#\Лаба\Лаба\obj\Debug\netcoreapp3.1\Лаба.csprojAssemblyReference.cache
 C:\Users\mrlyk\Desktop\Код С#\Лаба\Лаба\obj\Debug\netcoreapp3.1\Лаба.AssemblyInfoInputs.cache
 C:\Users\mrlyk\Desktop\Код С#\Лаба\Лаба\obj\Debug\netcoreapp3.1\Лаба.AssemblyInfo.cs
 C:\Users\mrlyk\Desktop\Код С#\Лаба\Лаба\obj\Debug\netcoreapp3.1\Лаба.dll

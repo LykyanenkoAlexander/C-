@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Numerics;
+using System.Threading.Tasks;
 
 namespace Лаба
 {
@@ -36,14 +38,12 @@ namespace Лаба
 
                 Data.Add(D);
             }
-
         }
-
 
         public override Complex[] NearAverage(float eps)
         {
             Complex mid_value = 0;
-            int ind = -1;
+            int ind = 0;
 
             foreach (var item in Data)
             {
@@ -51,7 +51,6 @@ namespace Лаба
             }
 
             mid_value = mid_value.Real / Data.Count;
-
 
             foreach (var item in Data)
             {
@@ -61,7 +60,7 @@ namespace Лаба
                 }
             }
 
-            Complex[] NearAverage = new Complex[ind + 1];
+            Complex[] NearAverage = new Complex[ind];
             ind = 0;
 
             foreach (var item in Data)
@@ -69,6 +68,7 @@ namespace Лаба
                 if (Math.Abs(mid_value.Real - item.Compl.Real) <= (double)eps)
                 {
                     NearAverage[ind] = item.Compl;
+                    Console.WriteLine(item.Compl);
                     ind++;
                 }
             }
@@ -79,7 +79,7 @@ namespace Лаба
         {
             string res = "Base class values:" + '\n' +
                          "Indeficator = " + Indef + '\n' + "Frequency = " + Freq + '\n' +
-                         "List size = " + Data.Count;
+                         "List size = " + Data.Count + '\n';
             return res;
         }
 
@@ -96,10 +96,6 @@ namespace Лаба
 
             return long_res;
         }
-
-
-
-
-
     }
+
 }

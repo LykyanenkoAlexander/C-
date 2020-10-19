@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Numerics;
+using System.Threading.Tasks;
 
 namespace Лаба
 {
@@ -42,18 +44,19 @@ namespace Лаба
 
             for (int i = 0; i < a.Node_Val.GetLength(0); i++)
             {
-                for (int j = 0; j < a.Node_Val.GetLength(0); j++)
+                for (int j = 0; j < a.Node_Val.GetLength(1); j++)
                 {
                     DataItem DI = new DataItem();
+                    DI.Vect2 = new Vector2(a.Elem[0].Step * i,
+                                           a.Elem[1].Step * j);
 
-                    DI.Vect2 = new Vector2((float)a.Node_Val[i, j].Real,
-                                          (float)a.Node_Val[i, j].Imaginary);
+                    DI.Compl = new Complex(a.Node_Val[i, j].Real,
+                                           a.Node_Val[i, j].Imaginary);
 
-                    DI.Compl = new Complex((float)a.Node_Val[i, j].Real,
-                                          (float)a.Node_Val[i, j].Imaginary);
                     V2.Data.Add(DI);
                 }
             }
+
             return V2;
         }
 
@@ -93,7 +96,7 @@ namespace Лаба
                     if (Math.Abs(mid_value.Real - Node_Val[i, j].Real) <= (double)eps)
                     {
                         NearAverage[ind] = Node_Val[i, j];
-                        //Console.WriteLine(NearAverage[ind]);
+                        Console.WriteLine(NearAverage[ind]);
                         ind++;
                     }
                 }
@@ -120,13 +123,13 @@ namespace Лаба
                     "Grid data:" + '\n' + "Ox: " + "  " + "Number of nodes = " + Elem[0].Node +
                     ", Number of steps = " + Elem[0].Step + '\n' +
                     "Oy: " + "  " + "Number of nodes = " + Elem[1].Node + ", Number of steps = " +
-                    Elem[1].Step;
+                    Elem[1].Step + '\n';
 
             for (int i = 0; i < Elem[0].Node; i++)
             {
                 for (int j = 0; j < Elem[1].Node; j++)
                 {
-                    long_res = long_res + '\n' + "[ " + i * Elem[0].Step + ", " + j * Elem[1].Step +
+                    long_res = long_res + '\n' + "[" + i * Elem[0].Step + ", " + j * Elem[1].Step +
                                "] " + " = " + Node_Val[i, j];
                 }
             }
