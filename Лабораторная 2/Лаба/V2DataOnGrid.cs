@@ -1,18 +1,13 @@
-﻿using Лаба;
-using System;
-using System.IO;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Numerics;
 using System.Threading.Tasks;
 
-
-
 namespace Лаба
 {
-    class V2DataOnGrid : V2Data, IEnumerable<DataItem>
+    class V2DataOnGrid : V2Data
     {
         public Grid1D[] Elem { get; set; }
         public Complex[,] Node_Val { get; set; }
@@ -23,66 +18,6 @@ namespace Лаба
             Elem[0] = x;
             Elem[1] = y;
         }
-
-        public override IEnumerator<DataItem> GetEnumerator()
-        {            
-            return new DataEnumerator(Node_Val, Elem[0], Elem[1]);
-        }
-
-        private class DataEnumerator : IEnumerator<DataItem>
-        {
-            private readonly Grid1D elem1, elem2;
-            private Complex[,] Node_Val_a;
-            private int position_x = -1;
-            private int position_y = 0;
-
-            object IEnumerator.Current => Current;
-
-            public DataItem Current
-            {
-                get
-                {
-                    DataItem DI = new DataItem();
-                    DI.Vect2 = new Vector2(elem1.GetOXCoord(position_x), elem2.GetOYCoord(position_y));
-                    DI.Compl = Node_Val_a[position_x, position_y];
-                    return DI;
-                }
-            }
-
-            public DataEnumerator(Complex[,] values, Grid1D elem1, Grid1D elem2)
-            {
-                this.Node_Val_a = values;
-                this.elem1 = elem1;
-                this.elem1 = elem1;
-            }
-
-            public bool MoveNext()
-            {
-                if (position_x == Node_Val_a.GetLength(1) - 1)
-                {
-                    position_y++;
-                    position_x = 0;
-                }
-                else
-                {
-                    position_x++;
-                }
-
-                return position_y < Node_Val_a.GetLength(0);
-            }
-
-            public void Reset()
-            {
-                position_x = -1;
-                position_y = 0;
-            }
-
-            public void Dispose()
-            {
-                Node_Val_a = null;
-            }
-        }
-
 
         public void InitRandom(double minValue, double maxValue)
         {
@@ -169,10 +104,9 @@ namespace Лаба
             return NearAverage;
         }
 
-
         public override string ToString()
         {
-            string res = "Type is V2DataOnGrid, " + '\n' + "Base class values:" + '\n' +
+            string res = "Base class values:" + '\n' +
                     "Indeficator = " + Indef + '\n' + "Frequency = " + Freq + '\n' +
                     "Grid data:" + '\n' + "Ox: " + '\n' + "Number of nodes = " + Elem[0].Node +
                     ", Number of steps = " + Elem[0].Step + '\n' + '\n' +
@@ -184,7 +118,7 @@ namespace Лаба
 
         public override string ToLongString()
         {
-            string long_res = "Type is V2DataOnGrid, " + "Base class values:" + '\n' +
+            string long_res = "Base class values:" + '\n' +
                     "Indeficator = " + Indef + '\n' + "Frequency = " + Freq + '\n' +
                     "Grid data:" + '\n' + "Ox: " + "  " + "Number of nodes = " + Elem[0].Node +
                     ", Number of steps = " + Elem[0].Step + '\n' +
@@ -201,29 +135,6 @@ namespace Лаба
             }
 
             long_res = long_res + '\n';
-            return long_res;
-        }
-
-        public override string ToLongString(string format)
-        {
-            string long_res = "Type is V2DataOnGrid, " + "Base class values:" + '\n' +
-                    "Indeficator = " + Indef + '\n' + "Frequency = " + Freq + '\n' +
-                    "Grid data:" + '\n' + "Ox: " + "  " + "Number of nodes = " + Elem[0].Node +
-                    ", Number of steps = " + Elem[0].Step + '\n' +
-                    "Oy: " + "  " + "Number of nodes = " + Elem[1].Node + ", Number of steps = " +
-                    Elem[1].Step + '\n';
-
-            for (int i = 0; i < Elem[0].Node; i++)
-            {
-                for (int j = 0; j < Elem[1].Node; j++)
-                {
-                    long_res = long_res + '\n' + "[" + i * Elem[0].Step + ", " + j * Elem[1].Step +
-                               "] " + " = " + Node_Val[i, j].ToString(format);
-                }
-            }
-
-            long_res = long_res + '\n';
-
             return long_res;
         }
 
