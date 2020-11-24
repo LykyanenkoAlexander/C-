@@ -10,4 +10,3 @@ C:\Users\mrlyk\Desktop\Код С#\Лаба\Лаба\obj\Debug\netcoreapp3.1\Ла
 C:\Users\mrlyk\Desktop\Код С#\Лаба\Лаба\obj\Debug\netcoreapp3.1\Лаба.pdb
 C:\Users\mrlyk\Desktop\Код С#\Лаба\Лаба\obj\Debug\netcoreapp3.1\Лаба.csproj.CoreCompileInputs.cache
 C:\Users\mrlyk\Desktop\Код С#\Лаба\Лаба\obj\Debug\netcoreapp3.1\Лаба.genruntimeconfig.cache
-C:\Users\mrlyk\Desktop\Код С#\Лаба\Лаба\obj\Debug\netcoreapp3.1\Лаба.csprojAssemblyReference.cache

@@ -2,12 +2,9 @@
 using System.Numerics;
 using System.Collections.Generic;
 using Лаба;
-using System.Collections;
 
 
-
-
-struct DataItem
+    struct DataItem
     {
         public Vector2 Vect2 { get; set; }
         public Complex Compl { get; set; }
@@ -20,13 +17,6 @@ struct DataItem
 
         public override string ToString()
         { return Vect2 + " , " + Compl; }
-
-        public string ToString(string format)
-        {
-            string res = Vect2.ToString();
-            res = res + " : " + Compl.ToString(format) + Math.Sqrt(Compl.Real*Compl.Real + Compl.Imaginary*Compl.Imaginary).ToString(format);
-            return res;
-        }
 
     }
 
@@ -41,32 +31,13 @@ struct DataItem
             Node = b;
         }
 
-        public float GetOXCoord(int ox_coord)
-        {
-            
-            return ox_coord*Step;
-        }
-
-        public float GetOYCoord(int oy_coord)
-        {
-
-            return oy_coord*Step;
-        }
-
-    public override string ToString()
+        public override string ToString()
         { return "Step = " + Step + ", " + "Node = " + Node; }
 
-        public string ToString(string format)
-        {
-            string res;
-            res = "Step = " +  Step.ToString(format) + " ,Node = " + Node.ToString(format);
-            return res;
-        }
+    }
 
-}
-
-    abstract class V2Data : IEnumerable<DataItem>
-{
+    abstract class V2Data
+    {
         public string Indef { get; set; }
         public double Freq { get; set; }
 
@@ -83,18 +54,11 @@ struct DataItem
         public override string ToString()
         { return "V2Data: " + Indef + "," + Freq; }
 
-        public abstract string ToLongString(string format);
-
-        public abstract IEnumerator<DataItem> GetEnumerator();
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-}
+    }
 
    
+
+
 
     class Res
     {
@@ -143,19 +107,9 @@ struct DataItem
             VM_1.Add(V2C_2);
             //Console.WriteLine(VM_1.Count);
             VM_1.Remove("new_1", 5);
-        //Console.WriteLine(VM_1.Count);
-        //VM_1.AddDefaults();
-        //Console.WriteLine(VM_1.Count);
+            //Console.WriteLine(VM_1.Count);
+            //VM_1.AddDefaults();
+            //Console.WriteLine(VM_1.Count);
 
-        
-        V2DataCollection Lab_2_Data_Coll = new V2DataCollection("C:/Users/mrlyk/Desktop/Код С#/Лаба/Лаба/data.txt");
-        Console.WriteLine(Lab_2_Data_Coll.ToLongString());
-
-        V2MainCollection Lab_2_Main_Coll = new V2MainCollection();
-        Lab_2_Main_Coll.AddDefaults();
-        Console.WriteLine(Lab_2_Main_Coll.Mid_Value);
-        Console.WriteLine(Lab_2_Main_Coll.Max_Far_Away);
-        Console.WriteLine(Lab_2_Main_Coll.More_then_one);
-
+        }
     }
-   }
